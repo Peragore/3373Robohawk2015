@@ -53,11 +53,18 @@ public class Robot extends SampleRobot {
     	
     	
     	boolean isRunning = false;
+    	boolean wasPressed = false;
     	
     	while (isOperatorControl() && isEnabled()) {
         	
-        	if(limitSwitch.get()){
+        	if(limitSwitch.get() && !wasPressed){
+        		
+        		wasPressed = true;
         		isRunning = !isRunning; //Toggles between on and off modes if you hit limit switch
+        		
+        	}
+        	if(!limitSwitch.get()){
+        		wasPressed = false;
         	}
         	if(!isRunning){
         		motor1.set(0);
