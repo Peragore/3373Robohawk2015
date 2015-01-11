@@ -14,6 +14,14 @@ public class Robot extends SampleRobot {
 	SuperJoystick stick1 = new SuperJoystick(0);
 	SuperJoystick stick2 = new SuperJoystick(1);
     
+	//Axes
+    int LX = 1;
+    int LY = 2;
+    int triggers = 3;
+    int RX = 4;
+    int RY = 5;
+    int DP = 6;
+	
 	public Robot() {
 
     } 
@@ -30,7 +38,14 @@ public class Robot extends SampleRobot {
      */
     public void operatorControl() {
         while (isOperatorControl() && isEnabled()) {
+        	talon1.set(stick1.getRawAxis(LX));
         	
+        	try {
+				Thread.sleep(10L);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
     }
 
